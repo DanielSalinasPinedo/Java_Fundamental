@@ -19,12 +19,19 @@ public class Comparacion {
             logger.info(()->word1+" es igual a "+word2);
         }
 
-        int tam = (word1.length() >= word2.length()) ? word1.length():word2.length();
+        int tamMax = (word1.length() >= word2.length()) ? word1.length():word2.length();
+        int tamMin = (word1.length() < word2.length()) ? word1.length():word2.length();
 
-        for(int i = 0; i<tam;i++){
-            if(word1.toCharArray()[i] != word2.toCharArray()[i]){
+        for(int i = 0; i<tamMin;i++){
+            if(((word1.length() >= word2.length()) ? word1:word2).toCharArray()[i] != ((word1.length() < word2.length()) ? word1:word2).toCharArray()[i]){
                 diferencia += word1.toCharArray()[i];
             }
         }
+
+        for(int i = tamMin; i<tamMax;i++){
+            diferencia += ((word1.length() >= word2.length()) ? word1:word2).toCharArray()[i];
+        }
+
+        logger.info("La diferencia es: "+diferencia);
     }
 }

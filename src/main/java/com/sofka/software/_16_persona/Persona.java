@@ -7,32 +7,24 @@ public class Persona {
     private char sexo;
     private double peso;
     private double altura;
+    private final static char sexoDefinido = 'H';
 
     public Persona() {
-        this.nombre = "";
-        this.edad = 0;
-        this.dni = "";
-        this.sexo = 'H';
-        this.peso = 0;
-        this.altura = 0;
+        this("", 0, sexoDefinido, 0, 0);
     }
 
-    public Persona(String nombre, int edad, String dni, char sexo, double peso, double altura) {
+    public Persona(String nombre, int edad, char sexo, double peso, double altura) {
         this.nombre = nombre;
         this.edad = edad;
-        this.dni = dni;
+        generateDni();
         this.sexo = sexo;
+        comprobarSexo();
         this.peso = peso;
         this.altura = altura;
     }
 
     public Persona(String nombre, int edad, char sexo) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.dni = "";
-        this.sexo = sexo;
-        this.peso = 0;
-        this.altura = 0;
+        this(nombre, edad, sexo, 0, 0);
     }
 
     public String getNombre() {
@@ -79,35 +71,44 @@ public class Persona {
         this.altura = altura;
     }
 
+    private void comprobarSexo(){
+        if(sexo != 'H' && sexo != 'M'){
+            this.sexo = sexoDefinido;
+        }
+    }
+
     public int calcularIMC(){
-        final double IMC = (getPeso() / (Math.pow(getAltura(), 2)));
+        double IMC = peso / (Math.pow(altura, 2));
         if(IMC<20){
             return  -1;
         } else if (IMC>= 20 && IMC<= 25) {
             return 0;
-        }else if(IMC>25){
-            System.out.println("ENTROOOOOOOOOOOO");
+        }else{
             return 1;
         }
-        return 2;
     }
 
     public boolean esMayorDeEdad(){
-        return (getEdad() >= 8);
+        return (edad >= 18);
     }
 
     public String toString(){
-        return "Nombre: "+getNombre()+"\nEdad: "+getEdad()+"\nDNI: "+getdni()+"\nAltura: "+getAltura()+"m"+
-                "\nPeso: "+getPeso()+"kg" + "\nSexo:"+getSexo();
+        return "Nombre: "+nombre+"\nEdad: "+edad+"\nDNI: "+dni+"\nAltura: "+altura+"m"+
+                "\nPeso: "+peso+"kg" + "\nSexo: "+ ((sexo == 'H') ? "hombre":"mujer");
     }
 
     public void generateDni(){
         int cont = 0;
         StringBuilder aleatorio = new StringBuilder();
         while(cont < 8){
-            aleatorio.append(Math.round(Math.random()*8));
+            aleatorio.append(letraDNI(Math.round(Math.random()*8)));
             cont++;
         }
         dni = aleatorio.toString();
+    }
+
+    private char letraDNI(long dni){
+        char letras[] = {'A','B','C','D','E','F','G','H','I'};
+        return letras[Math.toIntExact(dni)];
     }
 }

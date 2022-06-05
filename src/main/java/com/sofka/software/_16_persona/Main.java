@@ -6,18 +6,15 @@ import java.util.logging.Logger;
 public class Main {
 
     public static void peso(Persona persona, Logger logger){
-        if(persona.calcularIMC() == 0){
-            logger.info(persona.getNombre()+" esta por debajo del peso ideal");
-        }else if(persona.calcularIMC() == 1){
-            logger.info(persona.getNombre()+" tiene sobrepeso");
-        }else if(persona.calcularIMC() == -1){
-            logger.info(persona.getNombre()+" tiene el peso ideal");
+        int IMC = persona.calcularIMC();
+        switch (IMC){
+            case 0 -> logger.info(persona.getNombre()+" esta por debajo del peso ideal");
+            case 1 -> logger.info(persona.getNombre()+" tiene sobrepeso");
+            case -1 -> logger.info(persona.getNombre()+" tiene el peso ideal");
         }
     }
 
     public static void datos(Persona persona, Logger logger){
-        persona.generateDni();
-
         logger.info(()->persona.getNombre()+" "+((persona.esMayorDeEdad()) ? "si":"no")+" es mayor");
 
         logger.info(persona::toString);
@@ -39,17 +36,20 @@ public class Main {
         logger.info("Ingrese la altura en m(metros)");
         double altura = scanner.nextDouble();
 
-        Persona persona1 = new Persona(nombre, edad, "", 'H',peso, altura);
+        Persona persona1 = new Persona(nombre, edad, 'H',peso, altura);
         Persona persona2 = new Persona(nombre,edad,'H');
         Persona persona3 = new Persona();
 
+        logger.info("----Persona 1");
         peso(persona1,logger);
-        peso(persona2,logger);
-        peso(persona3,logger);
-
         datos(persona1,logger);
-        datos(persona2,logger);
-        datos(persona3,logger);
 
+        logger.info("---Persona 2");
+        peso(persona2,logger);
+        datos(persona2,logger);
+
+        logger.info("---Persona 3");
+        peso(persona3,logger);
+        datos(persona3,logger);
     }
 }
