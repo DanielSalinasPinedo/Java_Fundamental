@@ -7,19 +7,19 @@ public class Serie implements Entregable{
     private String genero;
     private String creador;
 
-    public final static int mayor = 1;
-    public final static int igual = 0;
-    public final static int menor = -1;
+    public final static int MAYOR = 1;
+    public final static int IGUAL = 0;
+    public final static int MENOR = -1;
 
-    private final static int numTemporadasDefecto = 3;
-    private final static boolean entregadoDefecto = false;
+    private final static int NUMTEMPORADASDEFECTO = 3;
+    private final static boolean ENTREGADODEFECTO = false;
 
     public Serie() {
-        this("",numTemporadasDefecto,"","");
+        this("",NUMTEMPORADASDEFECTO,"","");
     }
 
     public Serie(String titulo, String creador) {
-        this(titulo,numTemporadasDefecto,"",creador);
+        this(titulo,NUMTEMPORADASDEFECTO,"",creador);
     }
 
     public Serie(String titulo, int numeroTemporadas, String genero, String creador) {
@@ -73,22 +73,19 @@ public class Serie implements Entregable{
 
     @Override
     public boolean isEntregado() {
-        if(entregado){
-            return true;
-        }
-        return false;
+        return entregado;
     }
 
     @Override
     public int compareTo(Object a) {
         //valida si es mayor, menor o igual
-        int valida = menor;
+        int valida = MENOR;
         Serie serie = (Serie) a;
         if(numeroTemporadas>serie.getNumeroTemporadas()){
-            valida = mayor;
+            valida = MAYOR;
         }
         else if(numeroTemporadas == serie.getNumeroTemporadas()){
-            valida = igual;
+            valida = IGUAL;
         }
         return valida;
     }

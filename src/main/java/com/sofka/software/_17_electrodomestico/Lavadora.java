@@ -3,14 +3,14 @@ package com.sofka.software._17_electrodomestico;
 public class Lavadora extends Electrodomestico{
     private int carga;
 
-    private final static int cargaDefecto = 5;
+    private final static int CARGADEFECTO = 5;
 
     public Lavadora() {
-        this(precioBaseDefecto, colorDefecto, consumoEnergeticoDefecto, pesoDefecto, cargaDefecto);
+        this(PRECIOBASEDEFECTO, COLORDEFECTO, CONSUMOENERGETICODEFECTO, PESODEFECTO, CARGADEFECTO);
     }
 
     public Lavadora(double precioBase, double peso) {
-        this(precioBase, colorDefecto, consumoEnergeticoDefecto, peso, cargaDefecto);
+        this(precioBase, COLORDEFECTO, CONSUMOENERGETICODEFECTO, peso, CARGADEFECTO);
     }
 
     public Lavadora(double precioBase, String color, char consumoEnergetico, double peso, int carga) {
@@ -22,6 +22,7 @@ public class Lavadora extends Electrodomestico{
         return carga;
     }
 
+    @Override
     public double precioFinal(){
         double precioAgregado = super.precioFinal();
 

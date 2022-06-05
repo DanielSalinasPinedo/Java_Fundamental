@@ -9,12 +9,12 @@ public class Television extends Electrodomestico{
     private static boolean sintoizadorTDTDEFECTO = false;
 
     public Television() {
-        this(precioBaseDefecto, colorDefecto, consumoEnergeticoDefecto, pesoDefecto,
+        this(PRECIOBASEDEFECTO, COLORDEFECTO, CONSUMOENERGETICODEFECTO, PESODEFECTO,
                 resolucionDefecto, sintoizadorTDTDEFECTO);
     }
 
     public Television(int precioBase, double peso) {
-        this(precioBase, colorDefecto, consumoEnergeticoDefecto, peso, resolucionDefecto,
+        this(precioBase, COLORDEFECTO, CONSUMOENERGETICODEFECTO, peso, resolucionDefecto,
                 sintoizadorTDTDEFECTO);
     }
 
@@ -38,6 +38,7 @@ public class Television extends Electrodomestico{
         return sintonizadorTDT;
     }
 
+    @Override
     public double precioFinal(){
         double precioAgregado = super.precioFinal();
 

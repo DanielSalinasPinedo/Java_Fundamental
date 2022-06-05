@@ -7,12 +7,14 @@ public class Persona {
     private char sexo;
     private double peso;
     private double altura;
-    private final static char sexoDefinido = 'H';
+    private final static char SEXODEFINIDO = 'H';
 
+    //Constructor por defecto
     public Persona() {
-        this("", 0, sexoDefinido, 0, 0);
+        this("", 0, SEXODEFINIDO, 0, 0);
     }
 
+    //Constructor con todos los atriburos como parametros
     public Persona(String nombre, int edad, char sexo, double peso, double altura) {
         this.nombre = nombre;
         this.edad = edad;
@@ -23,6 +25,7 @@ public class Persona {
         this.altura = altura;
     }
 
+    //Constructor con nombre, edad y sexo
     public Persona(String nombre, int edad, char sexo) {
         this(nombre, edad, sexo, 0, 0);
     }
@@ -73,19 +76,20 @@ public class Persona {
 
     private void comprobarSexo(){
         if(sexo != 'H' && sexo != 'M'){
-            this.sexo = sexoDefinido;
+            this.sexo = SEXODEFINIDO;
         }
     }
 
     public int calcularIMC(){
-        double IMC = peso / (Math.pow(altura, 2));
-        if(IMC<20){
+        double imc = peso / (Math.pow(altura, 2));
+        if(imc<20){
             return  -1;
-        } else if (IMC>= 20 && IMC<= 25) {
+        } else if (imc>= 20 && imc<= 25) {
             return 0;
-        }else{
+        }else if(imc>25){
             return 1;
         }
+        return 2;
     }
 
     public boolean esMayorDeEdad(){
@@ -108,7 +112,7 @@ public class Persona {
     }
 
     private char letraDNI(long dni){
-        char letras[] = {'A','B','C','D','E','F','G','H','I'};
+        char[] letras = {'A','B','C','D','E','F','G','H','I'};
         return letras[Math.toIntExact(dni)];
     }
 }

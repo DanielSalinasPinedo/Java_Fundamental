@@ -6,9 +6,9 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) {
         Logger logger = Logger.getLogger("logger");
-        Serie listaSeries[] = new Serie[5];
-        Videojuego listaVideojuego[] = new Videojuego[5];
-        int VyS_Entregados = 0;
+        Serie[] listaSeries = new Serie[5];
+        Videojuego[] listaVideojuego = new Videojuego[5];
+        int vysEntregados = 0;
 
         listaSeries[0] = new Serie();
         listaSeries[1] = new Serie("Bob Esponja","Stephen Hillenburg");
@@ -31,11 +31,11 @@ public class Main {
 
         for(int i = 0; i<listaSeries.length; i++){
             if(listaSeries[i].isEntregado()){
-                VyS_Entregados +=1;
+                vysEntregados +=1;
                 listaSeries[i].devolver();
             }
             if(listaVideojuego[i].isEntregado()){
-                VyS_Entregados +=1;
+                vysEntregados +=1;
                 listaVideojuego[i].devolver();
             }
         }
@@ -43,13 +43,14 @@ public class Main {
         Serie serieMaxT = listaSeries[0];
         Videojuego videojuegoMaxH = listaVideojuego[0];
 
-        logger.info("Hemos entregado "+VyS_Entregados+" articulos");
+        int finalvysEntregados = vysEntregados;
+        logger.info(()->"Hemos entregado "+ finalvysEntregados +" articulos");
 
         for(int i = 1; i<listaSeries.length; i++){
-            if(listaSeries[i].compareTo(serieMaxT) == Serie.mayor){
+            if(listaSeries[i].compareTo(serieMaxT) == Serie.MAYOR){
                 serieMaxT = listaSeries[i];
             }
-            if(listaVideojuego[i].compareTo(videojuegoMaxH) == Videojuego.mayor){
+            if(listaVideojuego[i].compareTo(videojuegoMaxH) == Videojuego.MAYOR){
                 videojuegoMaxH = listaVideojuego[i];
             }
         }

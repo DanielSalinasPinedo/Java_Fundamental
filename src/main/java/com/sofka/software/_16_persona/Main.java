@@ -6,11 +6,12 @@ import java.util.logging.Logger;
 public class Main {
 
     public static void peso(Persona persona, Logger logger){
-        int IMC = persona.calcularIMC();
-        switch (IMC){
+        int imc = persona.calcularIMC();
+        switch (imc){
             case 0 -> logger.info(persona.getNombre()+" esta por debajo del peso ideal");
             case 1 -> logger.info(persona.getNombre()+" tiene sobrepeso");
             case -1 -> logger.info(persona.getNombre()+" tiene el peso ideal");
+            default -> logger.info("");
         }
     }
 

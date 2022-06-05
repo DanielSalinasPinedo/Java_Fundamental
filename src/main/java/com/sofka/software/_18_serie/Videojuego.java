@@ -6,15 +6,15 @@ public class Videojuego implements Entregable{
     private boolean entregado;
     private String genero;
     private String compania;
-    public final static int mayor = 1;
-    public final static int igual = 0;
-    public final static int menor = -1;
+    public final static int MAYOR = 1;
+    public final static int IGUAL = 0;
+    public final static int MENOR = -1;
 
-    private final static int horasEstimadasDefecto = 10;
-    private final static boolean entregadoDefecto = false;
+    private final static int HORASESTIMADASDEFECTO = 10;
+    private final static boolean ENTREGADODEFECTO = false;
 
     public Videojuego() {
-        this("",horasEstimadasDefecto, "", "");
+        this("",HORASESTIMADASDEFECTO, "", "");
     }
 
     public Videojuego(String titulo, int horasEstimadas) {
@@ -72,21 +72,18 @@ public class Videojuego implements Entregable{
 
     @Override
     public boolean isEntregado() {
-        if(entregado){
-            return true;
-        }
-        return false;
+        return entregado;
     }
 
     @Override
     public int compareTo(Object a) {
-        int valida = menor;
+        int valida = MENOR;
         Videojuego videojuego = (Videojuego) a;
         if(horasEstimadas>videojuego.getHorasEstimadas()){
-            valida = mayor;
+            valida = MAYOR;
         }
         else if(horasEstimadas == videojuego.getHorasEstimadas()){
-            valida = igual;
+            valida = IGUAL;
         }
         return valida;
     }

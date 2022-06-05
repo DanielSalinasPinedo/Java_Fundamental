@@ -6,14 +6,14 @@ public class Electrodomestico {
     protected char consumoEnergetico;
     protected double peso;
 
-    protected final static double precioBaseDefecto = 100;
-    protected final static String colorDefecto = "blanco";
-    protected final static char consumoEnergeticoDefecto = 'F';
-    protected final static double pesoDefecto = 5;
+    protected final static double PRECIOBASEDEFECTO = 100;
+    protected final static String COLORDEFECTO = "blanco";
+    protected final static char CONSUMOENERGETICODEFECTO = 'F';
+    protected final static double PESODEFECTO = 5;
 
 
     public Electrodomestico() {
-        this(precioBaseDefecto,colorDefecto, consumoEnergeticoDefecto, pesoDefecto);
+        this(PRECIOBASEDEFECTO,COLORDEFECTO, CONSUMOENERGETICODEFECTO, PESODEFECTO);
     }
 
     protected Electrodomestico(double precioBase, double peso) {
@@ -45,7 +45,7 @@ public class Electrodomestico {
     }
 
     protected void comprobarColor(String color){
-        String colores[] = {"blancos", "negro", "rojo", "azul", "gris"};
+        String[] colores = {"blancos", "negro", "rojo", "azul", "gris"};
         boolean existeColor = false;
 
         for(int i = 0;i < colores.length && !existeColor;i++){
@@ -54,12 +54,12 @@ public class Electrodomestico {
             }
         }
 
-        this.color = (existeColor) ? color : this.colorDefecto;
+        this.color = (existeColor) ? color : COLORDEFECTO;
     }
 
     protected void comprobarConsumoEnergetico(char letra){
         this.consumoEnergetico = (consumoEnergetico >= 65 && consumoEnergetico <= 70)
-                                    ? letra : consumoEnergeticoDefecto;
+                                    ? letra : CONSUMOENERGETICODEFECTO;
     }
 
     public double precioFinal(){
@@ -71,6 +71,7 @@ public class Electrodomestico {
             case 'D' -> valorAgregado += 50;
             case 'E' -> valorAgregado += 30;
             case 'F' -> valorAgregado += 10;
+            default -> valorAgregado += 0;
         }
 
         if(this.peso >= 0 && this.peso <=19){

@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) {
         Logger logger = Logger.getLogger("logger");
-        Electrodomestico lista[] = new Electrodomestico[10];
+        Electrodomestico[] lista = new Electrodomestico[10];
         double sumaElectrodomesticos = 0;
         double sumaTelevisores = 0;
         double sumaLavadoras = 0;
@@ -33,9 +33,12 @@ public class Main {
             }
         }
 
-        logger.info("Precio de todas las televisiones "+sumaTelevisores);
-        logger.info("Precio de todas las lavadoras  "+sumaLavadoras);
-        logger.info("Precio de todos los Electrodomesticos "+sumaElectrodomesticos);
+        double finalSumaTelevisores = sumaTelevisores;
+        logger.info(()->"Precio de todas las televisiones "+ finalSumaTelevisores);
+        double finalSumaLavadoras = sumaLavadoras;
+        logger.info(()->"Precio de todas las lavadoras  "+ finalSumaLavadoras);
+        double finalSumaElectrodomesticos = sumaElectrodomesticos;
+        logger.info(()->"Precio de todos los Electrodomesticos "+ finalSumaElectrodomesticos);
 
 
     }
